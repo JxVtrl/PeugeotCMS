@@ -9,6 +9,7 @@ import { CarsProps, cars } from '@/data/cars';
 
 import { addCar } from '@/utils/carsfunctions';
 import { useCars } from '@/context/CarsContext';
+import { columns_carros } from '@/data/columns';
 
 const Carros: React.FC = () => {
   const { cadasteredCars } = useCars();
@@ -24,13 +25,6 @@ const Carros: React.FC = () => {
   usePageTitle('Dashboard - Carros');
 
   const router = useRouter();
-
-  const columns = [
-    { title: 'Ações', field: 'actions' },
-    { title: 'Nome', field: 'name' },
-    { title: 'Modelo', field: 'model' },
-    { title: 'Agenda', field: 'schedule' },
-  ];
 
   useEffect(() => {
     console.log(cars);
@@ -64,7 +58,7 @@ const Carros: React.FC = () => {
         inputPlaceholder="Digite o cpf ou nome do cliente"
         handleButton={handleNewCar}
       />
-      <Table columns={columns} rows={rows} />
+      <Table columns={columns_carros} rows={rows} />
     </S.Container>
   );
 };

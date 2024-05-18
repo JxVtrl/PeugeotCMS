@@ -14,3 +14,10 @@ export const columns_motoristas = [
   { title: 'Celular', field: 'celphone' },
   { title: 'Telefone', field: 'phone' },
 ];
+
+export const columns_carros = [
+  { title: 'Ações', field: 'actions' },
+  { title: 'Nome', field: 'name' },
+  { title: 'Modelo', field: 'model' },
+  { title: 'Agenda', field: 'schedule' },
+];
