@@ -5,7 +5,6 @@ import * as S from "./styles";
 import { routeExist } from "@/utils/routeExist";
 import { useRouter } from "next/router";
 import Menu from "@/components/Menu";
-import { LoginIndex } from "@/screens";
 import { AppLayoutProps } from "@/interfaces/App.interface";
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
@@ -22,7 +21,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
             {children}
           </S.Content>
         </>
-      ) : <LoginIndex />}
+      ) : null}
     </S.AppContainer>
   );
 };
