@@ -28,7 +28,7 @@ export const RoutesData: iRoutesData = [
     id: 0,
     title: 'Home',
     icon: <BiHomeAlt />,
-    route: '/home',
+    route: 'w',
     visible: true,
   },
   {
@@ -128,4 +128,19 @@ export const RoutesData: iRoutesData = [
       },
     ],
   },
+  {
+    id: 7,
+    title: 'Motoristas',
+    icon: <BsPeople />,
+    route: '/motoristas',
+    visible: true,
+    accordionVisible: false,
+    accordion: [
+      {
+        id: 0,
+        title: 'Novo Motorista',
+        route: '/motoristas/novo',
+      },
+    ],
+  }
 ];

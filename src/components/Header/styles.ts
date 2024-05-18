@@ -7,7 +7,6 @@ export const Header = styled.div`
 `;
 
 export const SearchContainer = styled.div`
-  margin-top: 16px;
   display: flex;
   flex-direction: column;
   width: 100%;

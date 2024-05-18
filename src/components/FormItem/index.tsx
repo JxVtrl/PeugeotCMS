@@ -1,9 +1,9 @@
 import { FormItemProps } from '@/interfaces/Form.interface';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Select } from '@chakra-ui/react';
 import * as S from './styles';
 
-const FormItem: React.FC<FormItemProps> = ({
+const FormItem = ({
   label,
   placeholder,
   type = 'text',
@@ -12,7 +12,7 @@ const FormItem: React.FC<FormItemProps> = ({
   value,
   onChange,
   data,
-}) => {
+}: FormItemProps):ReactNode => {
   // check if data is undefined
   const dataUndefined = typeof data === undefined;
 
