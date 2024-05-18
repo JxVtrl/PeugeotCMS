@@ -60,6 +60,8 @@ export const MenuItemAccordionContainer = styled.div<MenuItemAccordionContainerP
   transition: all 0.2s ease-in-out;
 
   overflow: hidden;
+
+  margin-bottom: ${props => (props.show ? undefined : '-15px')};
 `;
 
 export const MenuItemAccordion = styled.div<MenuItemAccordionProps>`
