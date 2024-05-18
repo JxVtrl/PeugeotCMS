@@ -12,13 +12,13 @@ const Novo: React.FC = () => {
 
   const handleSaveClient = () => { };
 
-  const title = 'Cadastrar novo cliente';
+  const title = 'Cadastrar novo motorista';
 
   const buttons = [
     {
       text: 'Voltar',
       variant: 'secondary',
-      onClick: () => router.push('/clientes'),
+      onClick: () => router.push('/motoristas'),
     },
     {
       text: 'Salvar',

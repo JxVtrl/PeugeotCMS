@@ -2,13 +2,13 @@ import { ButtonProps } from "@/interfaces/Button.interface";
 import React from "react";
 import * as S from "./styles";
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   text,
   variant = "primary",
   onClick,
   disabled = false,
   type = 'submit'
-}) => {
+}: ButtonProps) => {
   return (
     <S.Button
       disabled={disabled}
