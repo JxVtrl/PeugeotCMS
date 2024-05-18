@@ -1,14 +1,11 @@
-import { AvatarProps } from "@/interfaces/Avatar.interface";
-import { getAuth } from "firebase/auth";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import * as S from "./styles";
+import { AvatarProps } from '@/interfaces/Avatar.interface';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import * as S from './styles';
 
 const Avatar: React.FC<AvatarProps> = ({ src, alt }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const handleClick = () => setOpenMenu(!openMenu);
-
-  const auth = getAuth();
 
   return (
     <>
@@ -22,7 +19,7 @@ const Avatar: React.FC<AvatarProps> = ({ src, alt }) => {
           height={40}
         />
         <S.AvatarSelect active={openMenu}>
-          <S.AvatarSelectItem onClick={() => auth.signOut()}>Sair</S.AvatarSelectItem>
+          <S.AvatarSelectItem onClick={() => null}>Sair</S.AvatarSelectItem>
         </S.AvatarSelect>
       </S.Container>
     </>
