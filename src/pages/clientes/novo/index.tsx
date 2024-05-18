@@ -7,10 +7,10 @@ import * as S from './styles';
 import { usePageTitle } from '@/hooks/usePageTitle';
 
 const Novo: React.FC = () => {
-  usePageTitle("Taylor Dashboard - Novo Cliente");
+  usePageTitle('Taylor Dashboard - Novo Cliente');
   const router = useRouter();
 
-  const handleSaveClient = () => { };
+  const handleSaveClient = () => {};
 
   const title = 'Cadastrar novo cliente';
 
@@ -24,57 +24,53 @@ const Novo: React.FC = () => {
       text: 'Salvar',
       variant: 'primary',
       onClick: handleSaveClient,
-    }
-  ] as ButtonProps[]
+    },
+  ] as ButtonProps[];
 
   const items = [
     {
       label: 'Nome',
       placeholder: 'Digite o nome',
       value: '',
-      onChange: () => { },
+      onChange: () => {},
     },
     {
       label: 'CPF',
       placeholder: 'Digite o CPF',
       value: '',
-      onChange: () => { },
+      onChange: () => {},
     },
     {
       label: 'RG',
       placeholder: 'Digite o RG',
       value: '',
-      onChange: () => { },
+      onChange: () => {},
     },
     {
       label: 'Telefone',
       placeholder: 'Digite o telefone',
       value: '',
-      onChange: () => { },
+      onChange: () => {},
     },
     {
       label: 'Celular',
       placeholder: 'Digite o celular',
       value: '',
-      onChange: () => { },
+      onChange: () => {},
     },
     {
       label: 'Rota',
       placeholder: 'Digite o rota',
       value: '',
-      onChange: () => { },
-    }
+      onChange: () => {},
+    },
   ] as FormItemProps[];
 
   return (
     <S.Container>
-      <NewForm
-        title={title}
-        buttons={buttons}
-        items={items}
-      />
+      <NewForm title={title} buttons={buttons} items={items} />
     </S.Container>
   );
-}
+};
 
 export default Novo;

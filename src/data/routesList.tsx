@@ -2,6 +2,7 @@ import { BiHomeAlt } from 'react-icons/bi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FiDollarSign, FiMap } from 'react-icons/fi';
 import { BsArchive, BsPeople } from 'react-icons/bs';
+import { FaCarAlt } from 'react-icons/fa';
 
 type iRoutesData = {
   id: number;
@@ -20,10 +21,9 @@ type iRoutesData = {
       route: string;
     }[];
   }[];
-}[]
+}[];
 
-
-export const RoutesData: iRoutesData = [  
+export const RoutesData: iRoutesData = [
   {
     id: 0,
     title: 'Home',
@@ -130,6 +130,21 @@ export const RoutesData: iRoutesData = [
   },
   {
     id: 7,
+    title: 'Carros',
+    icon: <FaCarAlt />,
+    route: '/carros',
+    visible: true,
+    accordionVisible: false,
+    accordion: [
+      {
+        id: 0,
+        title: 'Novo Carro',
+        route: '/carros/novo',
+      },
+    ],
+  },
+  {
+    id: 8,
     title: 'Motoristas',
     icon: <BsPeople />,
     route: '/motoristas',
@@ -142,5 +157,5 @@ export const RoutesData: iRoutesData = [
         route: '/motoristas/novo',
       },
     ],
-  }
+  },
 ];
