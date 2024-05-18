@@ -1,1 +1,1 @@
-export { AppProvider, useApp } from "./AppContext";
+export { MenuProvider, useMenu } from "./MenuContext";

@@ -7,9 +7,9 @@ import React, {
   useRef,
 } from "react";
 
-const AppContext = createContext({});
+const MenuContext = createContext({});
 
-export function AppProvider({ children }: any) {
+export function MenuProvider({ children }: any) {
   const [menuAbsolute, setMenuAbsolute] = useState<boolean>(false);
   const [miniMenu, setMiniMenu] = useState<boolean>(false);
   const [appPadding, setAppPadding] = useState<number>(275);
@@ -46,9 +46,9 @@ export function AppProvider({ children }: any) {
     setMiniMenu,handleCloseMenu,
   };
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  return <MenuContext.Provider value={value}>{children}</MenuContext.Provider>;
 }
 
-export function useApp() {
-  return useContext(AppContext);
+export function useMenu() {
+  return useContext(MenuContext);
 }

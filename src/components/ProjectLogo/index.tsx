@@ -1,4 +1,4 @@
-import { useApp } from "@/context";
+import { useMenu } from "@/context";
 import { useDevice } from "@/hooks";
 import { useRouter } from "next/router";
 import React from "react";
@@ -9,7 +9,7 @@ import Image from "next/image";
 const ProjectLogo: React.FC = () => {
   const router = useRouter();
   const { setMenuAbsolute, menuAbsolute, setShowMenu, miniMenu }: any =
-    useApp();
+    useMenu();
   const { isMobile } = useDevice();
 
   const handleChangeMenu = () => {

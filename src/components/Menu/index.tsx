@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import * as S from './styles';
 import ProjectLogo from '../ProjectLogo';
-import { useApp } from '@/context';
+import { useMenu } from '@/context';
 import { useRouter } from 'next/router';
 import { RoutesData } from '@/data/routesList';
 import { useDevice } from '@/hooks';
 import { IoIosArrowForward } from 'react-icons/io';
 
 const Menu: React.FC = () => {
-  const { menuAbsolute, showMenu, setMiniMenu, miniMenu }: any = useApp();
+  const { menuAbsolute, showMenu, setMiniMenu, miniMenu }: any = useMenu();
   const { isMobile } = useDevice();
   const router = useRouter();
 

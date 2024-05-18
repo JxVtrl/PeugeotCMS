@@ -8,12 +8,12 @@ import { useDevice } from '@/hooks';
 import VerticalLine from '../VerticalLine';
 import { RoutesData } from '@/data/routesList';
 import ChangeTheme from '../ChangeTheme';
-import { useApp } from '@/context';
+import { useMenu } from '@/context';
 import RoutePath from '../RoutePath';
 
 const AppBar: React.FC = () => {
   const { isMobile } = useDevice();
-  const { setShowMenu }: any = useApp();
+  const { setShowMenu }: any = useMenu();
 
   const router = useRouter();
 

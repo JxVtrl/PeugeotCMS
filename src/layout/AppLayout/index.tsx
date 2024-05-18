@@ -1,5 +1,5 @@
 import AppBar from "@/components/AppBar";
-import { useApp } from "@/context";
+import { useMenu } from "@/context";
 import React from "react";
 import * as S from "./styles";
 import { routeExist } from "@/utils/routeExist";
@@ -8,7 +8,7 @@ import Menu from "@/components/Menu";
 import { AppLayoutProps } from "@/interfaces/App.interface";
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
-  const { appPadding,handleCloseMenu }: any = useApp();
+  const { appPadding,handleCloseMenu }: any = useMenu();
   const router = useRouter();
 
   return (

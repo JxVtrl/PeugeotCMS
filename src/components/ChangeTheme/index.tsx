@@ -1,10 +1,10 @@
-import { useApp } from "@/context";
+import { useMenu } from "@/context";
 import React from "react";
 import { TbMoon, TbSun } from "react-icons/tb";
 import * as S from "./styles";
 
 const ChangeTheme: React.FC = () => {
-  const { nightMode, setNightMode }: any = useApp();
+  const { nightMode, setNightMode }: any = useMenu();
 
   return (
     <S.LightContainer onClick={() => setNightMode(!nightMode)}>
