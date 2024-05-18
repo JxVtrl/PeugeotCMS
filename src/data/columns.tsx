@@ -8,11 +8,14 @@ export const columns_movimentacoes = [
 
 export const columns_motoristas = [
   { title: 'Ações', field: 'actions' },
+  { title: 'id', field: 'id' },
   { title: 'Nome', field: 'name' },
-  { title: 'Rota', field: 'route' },
   { title: 'CPF', field: 'cpf' },
-  { title: 'Celular', field: 'celphone' },
+  { title: 'Email', field: 'email' },
   { title: 'Telefone', field: 'phone' },
+  { title: 'Código do Vendedor', field: 'seller_code' },
+  { title: 'Data do Agendamento', field: 'schedule' },
+  { title: 'Carro', field: 'car' },
 ];
 
 export const columns_carros = [
