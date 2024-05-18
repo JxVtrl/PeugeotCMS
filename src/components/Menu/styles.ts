@@ -7,7 +7,7 @@ import {
 import styled from 'styled-components';
 
 export const MenuContainer = styled.div<MenuContainerProps>`
-  background-color: #fff;
+  background-color: #000;
   position: fixed;
   padding: ${props => (props.showMenu ? '0 15px' : '0')};
   width: ${props =>
@@ -39,16 +39,33 @@ export const MenuItem = styled.div<MenuItemProps>`
 
   transition: all 0.2s ease-in-out;
 
-  background-color: ${props => (props.active ? '#f5f5f5' : 'transparent')};
+  p {
+font-weight: ${props => (props.active ? 'bold' : 'normal')};
 
-  &:hover {
-    background-color: #f5f5f5;
-  }
+}
+
+  background: ${props =>
+    props.active
+      ? 'linear-gradient(118deg, #1b6688, rgba(27, 102, 136, 0.7))'
+      : 'transparent'};
+  border-radius: 5px;
+
+  color: ${props => (props.active ? '#fff' : '#000')};
+
+
+ 
 `;
 
-export const MenuItemIcon = styled.div``;
+export const MenuItemIcon = styled.div`
+  color: #fff;
 
-export const MenuItemTitle = styled.p``;
+`;
+
+export const MenuItemTitle = styled.p`
+  color: #fff;
+
+
+`;
 
 export const MenuItemAccordionContainer = styled.div<MenuItemAccordionContainerProps>`
   width: 100%;

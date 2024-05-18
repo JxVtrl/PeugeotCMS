@@ -84,12 +84,9 @@ const Menu: React.FC = () => {
                         onClick={() => router.push(route)}
                         active={route === router.pathname}
                       >
-                        <S.MenuItemIcon
+                        <div
                           style={{
-                            width: 12,
-                            height: 12,
-                            borderRadius: 8,
-                            border: '1px solid #f6f6f6',
+                            paddingLeft: '16px',
                           }}
                         />
                         {miniMenu || <S.MenuItemTitle>{title}</S.MenuItemTitle>}

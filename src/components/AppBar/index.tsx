@@ -1,7 +1,5 @@
-import { useAuth } from '@/context/AuthContext';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BiHomeAlt } from 'react-icons/bi';
-import { MdKeyboardArrowRight } from 'react-icons/md';
 import * as S from './styles';
 import { useRouter } from 'next/router';
 import Avatar from '../Avatar';
@@ -9,8 +7,6 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { useDevice } from '@/hooks';
 import VerticalLine from '../VerticalLine';
 import { RoutesData } from '@/data/routesList';
-import { getAuth } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import ChangeTheme from '../ChangeTheme';
 import { useApp } from '@/context';
 import RoutePath from '../RoutePath';
@@ -18,8 +14,6 @@ import RoutePath from '../RoutePath';
 const AppBar: React.FC = () => {
   const { isMobile } = useDevice();
   const { setShowMenu }: any = useApp();
-  const auth = getAuth();
-  const [user] = useAuthState(auth);
 
   const router = useRouter();
 
@@ -46,14 +40,14 @@ const AppBar: React.FC = () => {
           )}
         </S.LeftOptions>
         <S.RightOptions>
-          {user && (
+          {/* {user && (
             <>
               <p>{user?.displayName}</p>
               {user?.photoURL && (
                 <Avatar src={user.photoURL} alt={'foto perfil'} />
               )}
             </>
-          )}
+          )} */}
         </S.RightOptions>
       </S.Content>
       <S.FootContent>

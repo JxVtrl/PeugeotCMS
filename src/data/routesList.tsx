@@ -94,19 +94,6 @@ export const RoutesData: iRoutesData = [
   //       ],
   //     },
   //     {
-  //       id: 2,
-  //       title: 'Locais de estoque',
-  //       route: '/estoque/locais',
-  //       subroutes: [
-  //         {
-  //           id: 0,
-  //           title: 'Novo Local de estoque',
-  //           route: '/estoque/locais/novo',
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
   {
     id: 7,
     title: 'Carros',

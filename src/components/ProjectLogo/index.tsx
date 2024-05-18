@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import * as S from "./styles";
+import Image from "next/image";
 
 const ProjectLogo: React.FC = () => {
   const router = useRouter();
@@ -26,7 +27,7 @@ const ProjectLogo: React.FC = () => {
   return (
     <S.Container>
       <S.LogoContainer onClick={handleHome}>
-        <h1>{miniMenu ? "L" : "Logo"}</h1>
+        <Image src="/shield.svg" width={32} height={32} alt='logo' />
       </S.LogoContainer>
       {!miniMenu && (
 
