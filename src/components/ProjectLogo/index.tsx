@@ -21,7 +21,7 @@ const ProjectLogo: React.FC = () => {
 
 
   const handleHome = () => {
-    router.push("/home");
+    router.push("/carros");
   };
 
   return (

@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import * as S from './styles';
 import { usePageTitle } from '@/hooks/usePageTitle';
 import Tabs from '@/components/Tabs';
+import { columns_motoristas } from '@/data/columns';
 
 type DriversList = {
   future: {
@@ -30,15 +31,6 @@ const Motoristas: React.FC = () => {
   usePageTitle('Taylor Dashboard - Motoristas');
   const router = useRouter();
   const [inputSearch, setInputSearch] = React.useState('');
-
-  const columns = [
-    { title: 'Ações', field: 'actions' },
-    { title: 'Nome', field: 'name' },
-    { title: 'Rota', field: 'route' },
-    { title: 'CPF', field: 'cpf' },
-    { title: 'Celular', field: 'celphone' },
-    { title: 'Telefone', field: 'phone' },
-  ];
 
   const [drivers, setDrivers] = React.useState<DriversList>({
     future: [
@@ -165,11 +157,13 @@ const Motoristas: React.FC = () => {
         tabs={[
           {
             title: 'Futuros',
-            content: <Table columns={columns} rows={futureDrivers} />,
+            content: (
+              <Table columns={columns_motoristas} rows={futureDrivers} />
+            ),
           },
           {
             title: 'Passados',
-            content: <Table columns={columns} rows={pastDrivers} />,
+            content: <Table columns={columns_motoristas} rows={pastDrivers} />,
           },
         ]}
       />
