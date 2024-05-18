@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import * as S from './styles';
 import { usePageTitle } from "@/hooks/usePageTitle";
+import Tabs from '@/components/Tabs';
 
 const Clientes: React.FC = () => {
   usePageTitle("Taylor Dashboard - Motoristas");
@@ -45,7 +46,23 @@ const Clientes: React.FC = () => {
         inputPlaceholder="Digite o cpf ou nome do Motorista"
         handleButton={handleNewClient}
       />
-      <Table columns={columns} rows={rows} />
+      
+      <Tabs
+        tabs={[
+          {
+            title: 'Futuros',
+            content: (
+              <Table columns={columns} rows={rows} />
+            ),
+          },
+          {
+            title: 'Passados',
+            content: (
+              <Table columns={columns} rows={rows} />
+            ),
+          },
+        ]}
+      />
     </S.Container>
     );
 };
