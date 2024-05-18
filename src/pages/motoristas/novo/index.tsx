@@ -9,8 +9,28 @@ import { usePageTitle } from '@/hooks/usePageTitle';
 const Novo: React.FC = () => {
   usePageTitle("Taylor Dashboard - Novo Cliente");
   const router = useRouter();
+  const [name, setName] = React.useState('');
+  const [cpf, setCpf] = React.useState('');
+  const [rg, setRg] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [celphone, setCelphone] = React.useState('');
+  const [route, setRoute] = React.useState('');
 
-  const handleSaveClient = () => { };
+  const handleSaveClient = () => {
+    console.log('Salvando cliente');
+    
+    const client = {
+      name,
+      cpf,
+      rg,
+      phone,
+      celphone,
+      route
+    };
+    
+    console.log(client);
+    router.push('/motoristas');
+  };
 
   const title = 'Cadastrar novo motorista';
 
@@ -31,38 +51,38 @@ const Novo: React.FC = () => {
     {
       label: 'Nome',
       placeholder: 'Digite o nome',
-      value: '',
-      onChange: () => { },
+      value: name,
+      onChange: setName,
     },
     {
       label: 'CPF',
       placeholder: 'Digite o CPF',
-      value: '',
-      onChange: () => { },
+      value: cpf,
+      onChange: setCpf,
     },
     {
       label: 'RG',
       placeholder: 'Digite o RG',
-      value: '',
-      onChange: () => { },
+      value: rg,
+      onChange: setRg,
     },
     {
       label: 'Telefone',
       placeholder: 'Digite o telefone',
-      value: '',
-      onChange: () => { },
+      value: phone,
+      onChange: setPhone,
     },
     {
       label: 'Celular',
       placeholder: 'Digite o celular',
-      value: '',
-      onChange: () => { },
+      value: celphone,
+      onChange: setCelphone,
     },
     {
       label: 'Rota',
       placeholder: 'Digite o rota',
-      value: '',
-      onChange: () => { },
+      value: route,
+      onChange: setRoute,
     }
   ] as FormItemProps[];
 
