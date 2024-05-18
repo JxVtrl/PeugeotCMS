@@ -36,6 +36,7 @@ const Clientes: React.FC = () => {
   const handleNewClient = () => {
     router.push('/clientes/novo');
   };
+  
   return (
   <S.Container>
       <Header
