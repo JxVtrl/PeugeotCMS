@@ -11,6 +11,7 @@ export const Container = styled.div`
 export const LogoContainer = styled.div`
   cursor: pointer;
 margin-left: 8px;
+margin-bottom: 2rem;
 
 display: flex;
 align-items: center;
