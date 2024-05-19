@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const LogoContainer = styled.div`
   cursor: pointer;
+margin-left: 8px;
 `;
 
 export const CloseButtonContainer = styled.div``;
