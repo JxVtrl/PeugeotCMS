@@ -2,7 +2,6 @@ import React from 'react';
 import { BiHomeAlt } from 'react-icons/bi';
 import * as S from './styles';
 import { useRouter } from 'next/router';
-import Avatar from '../Avatar';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useDevice } from '@/hooks';
 import VerticalLine from '../VerticalLine';
@@ -18,7 +17,7 @@ const AppBar: React.FC = () => {
   const router = useRouter();
 
   const handleNavigateHome = () => {
-    router.push('/home');
+    // router.push('/');
   };
 
   const getTitle = () =>
@@ -39,16 +38,6 @@ const AppBar: React.FC = () => {
             <ChangeTheme />
           )}
         </S.LeftOptions>
-        <S.RightOptions>
-          {/* {user && (
-            <>
-              <p>{user?.displayName}</p>
-              {user?.photoURL && (
-                <Avatar src={user.photoURL} alt={'foto perfil'} />
-              )}
-            </>
-          )} */}
-        </S.RightOptions>
       </S.Content>
       <S.FootContent>
         <h1>
