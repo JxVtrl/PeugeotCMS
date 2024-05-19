@@ -21,6 +21,4 @@ export const columns_motoristas = [
 export const columns_carros = [
   { title: 'Ações', field: 'actions' },
   { title: 'Nome', field: 'name' },
-  { title: 'Modelo', field: 'model' },
-  { title: 'Agenda', field: 'schedule' },
 ];
