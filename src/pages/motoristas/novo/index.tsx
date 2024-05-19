@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import NewForm from '@/components/NewForm';
 import { ButtonProps } from '@/interfaces/Button.interface';
 import { FormItemProps } from '@/interfaces/Form.interface';
@@ -6,30 +7,49 @@ import { useRouter } from 'next/router';
 import * as S from './styles';
 import { usePageTitle } from '@/hooks/usePageTitle';
 
+import { isCpfValid } from '@/utils/isCpfValid';
+
 const Novo: React.FC = () => {
-  usePageTitle("Taylor Dashboard - Novo Cliente");
+  usePageTitle('Taylor Dashboard - Novo Cliente');
   const router = useRouter();
-  const [name, setName] = React.useState('');
+  const [fullName, setFullname] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [phoneNumber, setPhoneNumber] = React.useState('');
   const [cpf, setCpf] = React.useState('');
-  const [rg, setRg] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [celphone, setCelphone] = React.useState('');
-  const [route, setRoute] = React.useState('');
+  const [cep, setCep] = React.useState('');
+  const [wantsTestDrive, setWantsTestDrive] = React.useState(false);
+  const [cnh, setCnh] = React.useState('');
 
   const handleSaveClient = () => {
     console.log('Salvando cliente');
-    
-    const client = {
-      name,
+
+    const newClient = {
+      fullName,
+      email,
+      phoneNumber,
       cpf,
-      rg,
-      phone,
-      celphone,
-      route
+      cnh,
+      cep,
+      wantsTestDrive,
     };
-    
-    console.log(client);
-    router.push('/motoristas');
+
+    if (!isCpfValid(cpf)) {
+      throw new Error('CPF inválido');
+    }
+
+    if (newClient) {
+      try {
+        let response = axios.post(
+          'http://localhost:3036/api/users/new',
+          newClient,
+        );
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    // router.push('/motoristas');
   };
 
   const title = 'Cadastrar novo motorista';
@@ -44,57 +64,73 @@ const Novo: React.FC = () => {
       text: 'Salvar',
       variant: 'primary',
       onClick: handleSaveClient,
-    }
-  ] as ButtonProps[]
+    },
+  ] as ButtonProps[];
 
   const items = [
     {
-      label: 'Nome',
-      placeholder: 'Digite o nome',
-      value: name,
-      onChange: setName,
+      label: 'Nome Completo',
+      placeholder: 'Digite o nome completo',
+      value: fullName,
+      onChange: e => {
+        setFullname(e);
+      },
+    },
+    {
+      label: 'Email',
+      placeholder: 'Digite o email',
+      value: email,
+      onChange: e => {
+        setEmail(e);
+      },
     },
     {
       label: 'CPF',
       placeholder: 'Digite o CPF',
       value: cpf,
-      onChange: setCpf,
+      onChange: e => {
+        setCpf(e);
+      },
     },
     {
-      label: 'RG',
-      placeholder: 'Digite o RG',
-      value: rg,
-      onChange: setRg,
+      label: 'Cep',
+      placeholder: 'Digite o CEP',
+      value: cep,
+      onChange: e => {
+        setCep(e);
+      },
+    },
+    {
+      label: 'CNH',
+      placeholder: 'Digite o CNH',
+      value: cnh,
+      onChange: e => {
+        setCnh(e);
+      },
     },
     {
       label: 'Telefone',
-      placeholder: 'Digite o telefone',
-      value: phone,
-      onChange: setPhone,
+      placeholder: 'Telefone p/ contato',
+      value: phoneNumber,
+      onChange: e => {
+        setPhoneNumber(e);
+      },
     },
     {
-      label: 'Celular',
-      placeholder: 'Digite o celular',
-      value: celphone,
-      onChange: setCelphone,
+      label: 'Deseja fazer test drive?',
+      value: wantsTestDrive,
+      onChange: e => {
+        setWantsTestDrive(e);
+      },
+      type: 'checkbox',
     },
-    {
-      label: 'Rota',
-      placeholder: 'Digite o rota',
-      value: route,
-      onChange: setRoute,
-    }
   ] as FormItemProps[];
 
   return (
     <S.Container>
-      <NewForm
-        title={title}
-        buttons={buttons}
-        items={items}
-      />
+      <NewForm title={title} buttons={buttons} items={items} />
     </S.Container>
   );
-}
+};
 
 export default Novo;

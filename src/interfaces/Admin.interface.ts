@@ -1,7 +1,8 @@
 export interface AdminProps {
-    id: number;
-    name: string;
-    cpf: string;
-    email: string;
-    phone: string;
+  //   id: number;
+  fullName: string;
+  cpf: string;
+  email: string;
+  phoneNumber: string;
+  wantsTestDrive: boolean;
 }
