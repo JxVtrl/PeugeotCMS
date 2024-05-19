@@ -1,5 +1,5 @@
 export interface AdminProps {
-  //   id: number;
+  id: number | string;
   fullName: string;
   cpf: string;
   email: string;

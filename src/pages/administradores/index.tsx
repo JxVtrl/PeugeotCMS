@@ -31,7 +31,7 @@ const Administradores: React.FC = () => {
   };
 
   function deleteAdmin(id: number | string) {
-    const index = adminList.findIndex(admin => admin.id === id);
+    const index = adminList.findIndex((admin, index) => admin.id === id);
     adminList.splice(index, 1);
     setAdminList([...adminList]);
   }
@@ -39,12 +39,12 @@ const Administradores: React.FC = () => {
   useEffect(() => {
     setFilteredAdmins(
       adminList.filter(admin =>
-        admin.name.toLowerCase().includes(inputSearch.toLowerCase()),
+        admin.fullName.toLowerCase().includes(inputSearch.toLowerCase()),
       ),
     );
   }, [inputSearch, adminList]);
 
-  const rows = filteredAdmins.map(admin => {
+  const rows = filteredAdmins.map((admin) => {
     return {
       actions: (
         <ActionButtons
