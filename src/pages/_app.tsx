@@ -4,16 +4,19 @@ import type { AppProps } from 'next/app';
 import AppLayout from '@/layout/AppLayout';
 import { ChakraProvider } from '@chakra-ui/react';
 import { CarsProvider } from '@/context/CarsContext';
+import { AdminProvider } from '@/context/AdminContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
       <CarsProvider>
-          <MenuProvider>
+        <MenuProvider>
+          <AdminProvider>
             <AppLayout>
               <Component {...pageProps} />
             </AppLayout>
-          </MenuProvider>
+          </AdminProvider>
+        </MenuProvider>
       </CarsProvider>
     </ChakraProvider>
   );

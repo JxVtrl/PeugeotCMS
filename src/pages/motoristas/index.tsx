@@ -24,36 +24,33 @@ type DriversList = {
   past: DriverProps[];
 };
 
- export const drivers_mock = [
-    {
-      id: 0,
-      name: 'João',
-      cpf: '123.456.789-00',
-      email: 'joao@gmail.com',
-      phone: '11 1234-5678',
-      seller_code: '123456',
-      schedule: '2021-09-10T15:00:00.000Z',
-      car: 'Fusca',
-    },
-    {
-      id: 1,
-      name: 'Maria',
-      cpf: '987.654.321-00',
-      email: 'maria@gmail.com',
-      phone: '11 9876-5432',
-      seller_code: '654321',
-      schedule: '2021-09-10T15:00:00.000Z',
-      car: 'Gol',
-    },
-  ];
+export const drivers_mock = [
+  {
+    id: 0,
+    name: 'João',
+    cpf: '123.456.789-00',
+    email: 'joao@gmail.com',
+    phone: '11 1234-5678',
+    seller_code: '123456',
+    schedule: '2021-09-10T15:00:00.000Z',
+    car: 'Fusca',
+  },
+  {
+    id: 1,
+    name: 'Maria',
+    cpf: '987.654.321-00',
+    email: 'maria@gmail.com',
+    phone: '11 9876-5432',
+    seller_code: '654321',
+    schedule: '2021-09-10T15:00:00.000Z',
+    car: 'Gol',
+  },
+];
 
 const Motoristas: React.FC = () => {
-  
   usePageTitle('Motoristas');
   const router = useRouter();
   const [inputSearch, setInputSearch] = React.useState('');
-
-
 
   const [drivers, setDrivers] = React.useState<DriversList>({
     future: [],
@@ -141,7 +138,6 @@ const Motoristas: React.FC = () => {
     }
   };
 
-  
   const futureRows = filteredDrivers.future.map(driver => {
     return {
       actions: (
@@ -151,17 +147,10 @@ const Motoristas: React.FC = () => {
           editAction={() => router.push(`/motoristas/editar/${driver.id}`)}
         />
       ),
-      id: driver.id,
-      name: driver.name,
-      cpf: driver.cpf,
-      email: driver.email,
-      phone: driver.phone,
-      seller_code: driver.seller_code,
-      schedule: driver.schedule,
-      car: driver.car,
+      ...driver,
     };
   });
-  
+
   const pastRows = filteredDrivers.past.map(driver => {
     return {
       actions: (
@@ -171,18 +160,10 @@ const Motoristas: React.FC = () => {
           editAction={() => router.push(`/motoristas/editar/${driver.id}`)}
         />
       ),
-      id: driver.id,
-      name: driver.name,
-      cpf: driver.cpf,
-      email: driver.email,
-      phone: driver.phone,
-      seller_code: driver.seller_code,
-      schedule: driver.schedule,
-      car: driver.car,
+      ...driver,
     };
   });
-  
-  
+
   return (
     <S.Container>
       <Header
@@ -196,19 +177,12 @@ const Motoristas: React.FC = () => {
       <Tabs
         tabs={[
           {
-            title: 'Futuros',
-            content: (
-              <Table
-                columns={columns_motoristas}
-                rows={futureRows}
-              />
-            ),
+            title: 'Atuais',
+            content: <Table columns={columns_motoristas} rows={futureRows} />,
           },
           {
             title: 'Passados',
-            content: (
-              <Table columns={columns_motoristas} rows={pastRows} />
-            ),
+            content: <Table columns={columns_motoristas} rows={pastRows} />,
           },
         ]}
       />

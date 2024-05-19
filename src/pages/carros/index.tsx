@@ -14,10 +14,9 @@ import { columns_carros } from '@/data/columns';
 const Carros: React.FC = () => {
   const router = useRouter();
 
-  const { cadasteredCars } = useCars();
+  const { cars, setCars } = useCars();
 
-  const [cars, setCars] = useState<CarsProps[]>(cadasteredCars);
-  const [filteredCars, setFilteredCars] = useState<CarsProps[]>(cadasteredCars);
+  const [filteredCars, setFilteredCars] = useState<CarsProps[]>(cars);
   const [search, setSearch] = useState('');
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [carToUpdate, setCarToUpdate] = useState<CarsProps | null>(null);
@@ -70,7 +69,7 @@ const Carros: React.FC = () => {
         inputOnChange={(e: any) => setSearch(e.target.value)}
         inputValue={search}
         inputLabel="Buscar"
-        inputPlaceholder="Digite o cpf ou nome do cliente"
+        inputPlaceholder="Digite o nome do carro"
         handleButton={handleNewCar}
       />
       <Table columns={columns_carros} rows={rows} />
