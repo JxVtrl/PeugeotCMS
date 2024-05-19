@@ -10,12 +10,12 @@ export const Container = styled.div`
 
 export const LogoContainer = styled.div`
   cursor: pointer;
-margin-left: 8px;
-margin-bottom: 2rem;
+  margin-left: 8px;
+  margin-bottom: 2rem;
 
-display: flex;
-align-items: center;
-gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 `;
 
 export const LogoText = styled.p`
@@ -23,8 +23,7 @@ export const LogoText = styled.p`
   font-weight: 500;
   color: #fff;
   margin-left: 8px;
-
-`
+`;
 
 export const CloseButtonContainer = styled.div``;
 
