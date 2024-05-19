@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import * as S from './styles';
+import Header from '@/components/Header';
 
-const Geral: React.FC = () => {
+const TempoUtilizado: React.FC = () => {
   const [from, setFrom] = useState('');
   const [until, setUntil] = useState('');
   const [maxTime, setMaxTime] = useState('');
@@ -32,10 +33,8 @@ const Geral: React.FC = () => {
         setMaxTime(e.target.value),
     },
   ];
-
   return (
     <S.Container>
-      <S.Subtitle>Tempo total de Utilização</S.Subtitle>
       <S.Form>
         {inputs.map(input => (
           <S.ContainerInput key={input.id}>
@@ -55,4 +54,4 @@ const Geral: React.FC = () => {
   );
 };
 
-export default Geral;
+export default TempoUtilizado;

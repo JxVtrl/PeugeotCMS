@@ -19,7 +19,7 @@ const RoutePath: React.FC = () => {
         path[index] = `/${item}`;
       }
     });
-
+    
     setPathArray(path);
   }, [router.pathname]);
 
