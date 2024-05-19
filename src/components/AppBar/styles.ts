@@ -25,11 +25,9 @@ export const Content = styled.div`
   padding: 11px 14px;
   border-radius: 12px;
 
-@media (max-width: 768px) {
-  padding: 11px 0;
-
-
-}
+  @media (max-width: 768px) {
+    padding: 11px 0;
+  }
 `;
 
 export const LeftOptions = styled.div`
@@ -61,7 +59,7 @@ export const FootContent = styled.div`
   @media (max-width: 768px) {
     margin-top: 0;
     flex-direction: column;
-gap: 12px;
+    gap: 12px;
   }
 
   h1 {
