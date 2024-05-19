@@ -28,6 +28,7 @@ const ProjectLogo: React.FC = () => {
     <S.Container>
       <S.LogoContainer onClick={handleHome}>
         <Image src="/shield.svg" width={32} height={32} alt='logo' />
+        <S.LogoText>Peugeot Casacor</S.LogoText>
       </S.LogoContainer>
       {!miniMenu && (
 
