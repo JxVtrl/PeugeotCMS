@@ -32,11 +32,9 @@ const AppBar: React.FC = () => {
     <S.Container>
       <S.Content>
         <S.LeftOptions>
-          {isMobile ? (
+          {isMobile && (
             <GiHamburgerMenu onClick={() => setShowMenu(true)} />
-          ) : (
-            <ChangeTheme />
-          )}
+          ) }
         </S.LeftOptions>
       </S.Content>
       <S.FootContent>
