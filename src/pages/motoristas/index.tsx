@@ -48,7 +48,7 @@ type DriversList = {
   ];
 
 const Motoristas: React.FC = () => {
-  usePageTitle('Taylor Dashboard - Motoristas');
+  usePageTitle('Motoristas');
   const router = useRouter();
   const [inputSearch, setInputSearch] = React.useState('');
 
