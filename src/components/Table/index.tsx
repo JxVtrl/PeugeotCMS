@@ -38,7 +38,9 @@ const Table: React.FC<TableProps> = ({ columns, rows }) => {
               
               
               return (
-                <S.TableRowItem key={index}>
+                <S.TableRowItem key={index} style={{
+                  width: column.field === 'actions' ? '80px' : undefined,
+                }}>
                   {checkIfValueExists ? row[column.field] : "-"}
                 </S.TableRowItem>
               );
