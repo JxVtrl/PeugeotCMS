@@ -24,6 +24,12 @@ export const Content = styled.div`
 
   padding: 11px 14px;
   border-radius: 12px;
+
+@media (max-width: 768px) {
+  padding: 11px 0;
+
+
+}
 `;
 
 export const LeftOptions = styled.div`
