@@ -26,12 +26,16 @@ const RoutePath: React.FC = () => {
   return (
     <p>
       {pathArray.map((item, index) => {
-        if (item) {
+        console.log(item, index)
+        
+        const text = routeTitle(item);
+        
+        if (item && text) {
           return (
             <React.Fragment key={index}>
               <MdKeyboardArrowRight color="#6e6b7b" />
               <S.Span key={index} onClick={()=> router.push(item)}>
-                {routeTitle(item)}
+                {text}
               </S.Span>
             </React.Fragment>
           );

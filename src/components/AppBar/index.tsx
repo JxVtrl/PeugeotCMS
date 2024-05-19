@@ -29,7 +29,7 @@ const AppBar: React.FC = () => {
       route => route.route === router.pathname,
     );
 
-    return currentRoute ? currentRoute.title : 'Página não encontrada';
+    return currentRoute ? currentRoute.title : '';
   };
 
   return (
@@ -43,7 +43,9 @@ const AppBar: React.FC = () => {
       )}
       <S.FootContent>
         <h1>{getTitle()}</h1>
-        {!isMobile && <VerticalLine height={20} color="#d6dce1" />}
+        {!isMobile && !!getTitle() && (
+          <VerticalLine height={20} color="#d6dce1" />
+        )}
         <S.FootPaths>
           <BiHomeAlt
             color="#175673"
