@@ -24,11 +24,6 @@ type DriversList = {
   past: DriverProps[];
 };
 
-const Motoristas: React.FC = () => {
-  usePageTitle('Taylor Dashboard - Motoristas');
-  const router = useRouter();
-  const [inputSearch, setInputSearch] = React.useState('');
-
   const drivers_mock = [
     {
       id: 0,
@@ -51,6 +46,13 @@ const Motoristas: React.FC = () => {
       car: 'Gol',
     },
   ];
+
+const Motoristas: React.FC = () => {
+  usePageTitle('Taylor Dashboard - Motoristas');
+  const router = useRouter();
+  const [inputSearch, setInputSearch] = React.useState('');
+
+
 
   const [drivers, setDrivers] = React.useState<DriversList>({
     future: [],
@@ -102,7 +104,7 @@ const Motoristas: React.FC = () => {
       future,
       past,
     });
-  }, [inputSearch]);
+  }, [inputSearch, drivers]);
 
   const handleNewClient = () => {
     router.push('/motoristas/novo');
