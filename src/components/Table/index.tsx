@@ -16,6 +16,23 @@ const Table: React.FC<TableProps> = ({ columns, rows }) => {
         {rows?.map((row, index) => (
           <S.TableRow key={index}>
             {columns?.map((column, index) => {
+              if (column.field === "schedule") {
+                const date = new Date(row[column.field] as string);
+                
+                const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+                const month = date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+                const year = date.getFullYear();
+                
+                const hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
+                const minutes = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
+                
+                return (
+                  <S.TableRowItem key={index}>
+                    {`${day}/${month}/${year} ${hour}:${minutes}`}
+                  </S.TableRowItem>
+                );
+              }
+              
               return (
                 <S.TableRowItem key={index}>
                   {row[column.field] || "N/A"}
