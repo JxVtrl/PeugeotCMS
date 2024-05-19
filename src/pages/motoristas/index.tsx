@@ -85,12 +85,12 @@ const Motoristas: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    const getAllDrivers = async () => {
-      let response = await axios.get('http://localhost:3036/api/users/list');
-      console.log(response.data);
-    };
+    // const getAllDrivers = async () => {
+    //   let response = await axios.get('http://localhost:3036/api/users/list');
+    //   console.log(response.data);
+    // };
 
-    getAllDrivers();
+    // getAllDrivers();
 
     const future = drivers.future.filter(driver => {
       return (
