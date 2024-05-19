@@ -1,12 +1,9 @@
 export { default as AppBar } from "./AppBar";
-export { default as Avatar } from "./Avatar";
 export { default as Button } from "./Button";
 export { default as ChangeTheme } from "./ChangeTheme";
-export { IncomesChart, SalesChart } from "./Charts";
 export { default as Menu } from "./Menu";
 export { default as Modal } from "./Modal";
 export { default as ProjectLogo } from "./ProjectLogo";
 export { default as RoutePath } from "./RoutePath";
-export { default as StatusItem } from "./StatusItem";
 export { default as Table } from "./Table";
 export { default as VerticalLine } from "./VerticalLine";
