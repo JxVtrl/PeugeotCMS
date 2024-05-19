@@ -5,13 +5,13 @@ import Button from '../Button';
 import FormItem from '../FormItem';
 import * as S from './styles';
 
-const NewForm: React.FC<NewFormProps> = ({
+const NewForm = ({
   items,
   title = 'Novo',
   buttons,
   children,
   headChildren
-}) => {
+}:NewFormProps) => {
   return (
     <S.Content>
       <S.Title>{title}</S.Title>

@@ -12,7 +12,7 @@ const FormItem = ({
   value,
   onChange,
   data,
-}: FormItemProps):ReactNode => {
+}: FormItemProps) => {
   // check if data is undefined
   const dataUndefined = typeof data === undefined;
 
