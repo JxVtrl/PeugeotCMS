@@ -8,23 +8,20 @@ import { usePageTitle } from '@/hooks/usePageTitle';
 import Tabs from '@/components/Tabs';
 import { columns_motoristas } from '@/data/columns';
 
+type DriverProps = {
+  id: string | number;
+  name: string;
+  cpf: string;
+  email: string;
+  phone: string;
+  seller_code: string;
+  schedule: string;
+  car: string;
+};
+
 type DriversList = {
-  future: {
-    id: string | number;
-    name: string;
-    route: string;
-    cpf: string;
-    celphone: string;
-    phone: string;
-  }[];
-  past: {
-    id: string | number;
-    name: string;
-    route: string;
-    cpf: string;
-    celphone: string;
-    phone: string;
-  }[];
+  future: DriverProps[];
+  past: DriverProps[];
 };
 
 const Motoristas: React.FC = () => {
@@ -32,27 +29,32 @@ const Motoristas: React.FC = () => {
   const router = useRouter();
   const [inputSearch, setInputSearch] = React.useState('');
 
+  const drivers_mock = [
+    {
+      id: 0,
+      name: 'João',
+      cpf: '123.456.789-00',
+      email: 'joao@gmail.com',
+      phone: '11 1234-5678',
+      seller_code: '123456',
+      schedule: '2021-09-10T15:00:00.000Z',
+      car: 'Fusca',
+    },
+    {
+      id: 1,
+      name: 'Maria',
+      cpf: '987.654.321-00',
+      email: 'maria@gmail.com',
+      phone: '11 9876-5432',
+      seller_code: '654321',
+      schedule: '2021-09-10T15:00:00.000Z',
+      car: 'Gol',
+    },
+  ];
+
   const [drivers, setDrivers] = React.useState<DriversList>({
-    future: [
-      {
-        id: '0',
-        name: 'Coca-Cola Future',
-        route: 'Coca-Cola',
-        cpf: '123.456.789-00',
-        celphone: '123.456.789-00',
-        phone: '123.456.789-00',
-      },
-    ],
-    past: [
-      {
-        id: '1',
-        name: 'Coca-Cola Past',
-        route: 'Coca-Cola',
-        cpf: '123.456.789-00',
-        celphone: '123.456.789-00',
-        phone: '123.456.789-00',
-      },
-    ],
+    future: [],
+    past: [],
   });
 
   const [filteredDrivers, setFilteredDrivers] = React.useState<DriversList>({
@@ -60,9 +62,47 @@ const Motoristas: React.FC = () => {
     past: [],
   });
 
+  const filterDriver = (drivers: DriverProps[], type: 'future' | 'past') => {
+    let list = [];
+
+    if (type === 'future') {
+      list = drivers.filter(driver => new Date(driver.schedule) > new Date());
+    } else {
+      list = drivers.filter(driver => new Date(driver.schedule) < new Date());
+    }
+    return list;
+  };
+
   useEffect(() => {
-    setFilteredDrivers(drivers);
-  }, [drivers]);
+    const futureDrivers = filterDriver(drivers_mock, 'future');
+    const pastDrivers = filterDriver(drivers_mock, 'past');
+
+    setDrivers({
+      future: futureDrivers,
+      past: pastDrivers,
+    });
+  }, []);
+
+  React.useEffect(() => {
+    const future = drivers.future.filter(driver => {
+      return (
+        driver.name.toLowerCase().includes(inputSearch.toLowerCase()) ||
+        driver.cpf.includes(inputSearch)
+      );
+    });
+
+    const past = drivers.past.filter(driver => {
+      return (
+        driver.name.toLowerCase().includes(inputSearch.toLowerCase()) ||
+        driver.cpf.includes(inputSearch)
+      );
+    });
+
+    setFilteredDrivers({
+      future,
+      past,
+    });
+  }, [inputSearch]);
 
   const handleNewClient = () => {
     router.push('/motoristas/novo');
@@ -71,26 +111,6 @@ const Motoristas: React.FC = () => {
   const handleSearch = (value: string) => {
     setInputSearch(value);
   };
-
-  // filter drivers
-  React.useEffect(() => {
-    const futureFiltered = drivers.future.filter(driver => {
-      return (
-        driver.name.includes(inputSearch) || driver.cpf.includes(inputSearch)
-      );
-    });
-
-    const pastFiltered = drivers.past.filter(driver => {
-      return (
-        driver.name.includes(inputSearch) || driver.cpf.includes(inputSearch)
-      );
-    });
-
-    setFilteredDrivers({
-      future: futureFiltered,
-      past: pastFiltered,
-    });
-  }, [inputSearch]);
 
   const removeDriverFromDB = (driver: any) => {
     return new Promise(resolve => {
@@ -118,31 +138,6 @@ const Motoristas: React.FC = () => {
     }
   };
 
-  const futureDrivers = filteredDrivers.future.map(driver => {
-    return {
-      ...driver,
-      actions: (
-        <ActionButtons
-          type="edit-delete"
-          editAction={() => null}
-          deleteAction={() => deleteDriver(driver)}
-        />
-      ),
-    };
-  });
-
-  const pastDrivers = filteredDrivers.past.map(driver => {
-    return {
-      ...driver,
-      actions: (
-        <ActionButtons
-          type="delete"
-          deleteAction={() => deleteDriver(driver)}
-        />
-      ),
-    };
-  });
-
   return (
     <S.Container>
       <Header
@@ -158,12 +153,17 @@ const Motoristas: React.FC = () => {
           {
             title: 'Futuros',
             content: (
-              <Table columns={columns_motoristas} rows={futureDrivers} />
+              <Table
+                columns={columns_motoristas}
+                rows={filteredDrivers.future}
+              />
             ),
           },
           {
             title: 'Passados',
-            content: <Table columns={columns_motoristas} rows={pastDrivers} />,
+            content: (
+              <Table columns={columns_motoristas} rows={filteredDrivers.past} />
+            ),
           },
         ]}
       />
