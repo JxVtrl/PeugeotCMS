@@ -38,6 +38,11 @@ export const RoutesData: iRoutesData = [
         title: 'Novo Carro',
         route: '/carros/novo',
       },
+      {
+        id: 0,
+        title: 'Editar Carro',
+        route: '/carros/editar',
+      },
     ],
   },
   {
@@ -52,6 +57,11 @@ export const RoutesData: iRoutesData = [
         id: 0,
         title: 'Novo Motorista',
         route: '/motoristas/novo',
+      },
+      {
+        id: 0,
+        title: 'Editar Motorista',
+        route: '/motoristas/editar',
       },
     ],
   },
