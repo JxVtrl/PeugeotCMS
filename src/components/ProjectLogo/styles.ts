@@ -6,12 +6,13 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+margin-bottom: 21px;
 `;
 
 export const LogoContainer = styled.div`
   cursor: pointer;
   margin-left: 8px;
-  margin-bottom: 2rem;
 
   display: flex;
   align-items: center;
