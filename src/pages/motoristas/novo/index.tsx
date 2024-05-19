@@ -8,7 +8,6 @@ import * as S from './styles';
 import { usePageTitle } from '@/hooks/usePageTitle';
 
 import { isCpfValid } from '@/utils/isCpfValid';
-import { isCnhValid } from '@/utils/isCnhValid';
 
 const Novo: React.FC = () => {
   usePageTitle('Taylor Dashboard - Novo Cliente');
@@ -38,11 +37,18 @@ const Novo: React.FC = () => {
       throw new Error('CPF inválido');
     }
 
-    // axios.post('http://localhost:3036/api/users/new', {
-    //   newClient,
-    // });
+    if (newClient) {
+      try {
+        let response = axios.post(
+          'http://localhost:3036/api/users/new',
+          newClient,
+        );
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
-    console.log(newClient);
     // router.push('/motoristas');
   };
 
