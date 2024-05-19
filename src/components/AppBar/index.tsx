@@ -18,7 +18,7 @@ const AppBar: React.FC = () => {
   const router = useRouter();
 
   const handleNavigateHome = () => {
-    router.push('/home');
+    // router.push('/');
   };
 
   const getTitle = () =>
