@@ -12,4 +12,5 @@ export type DriverProps = {
 export type DriversList = {
   future: DriverProps[];
   past: DriverProps[];
+  all: DriverProps[];
 };

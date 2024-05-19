@@ -5,9 +5,7 @@ import { FormItemProps } from '@/interfaces/Form.interface';
 import { useRouter } from 'next/router';
 import * as S from './styles';
 import { usePageTitle } from '@/hooks/usePageTitle';
-import { drivers_mock } from '../../index';
 import axios from 'axios';
-import { set } from 'react-hook-form';
 import { useDrivers } from '@/context/DriversContext';
 
 const Editar: React.FC = () => {
@@ -36,7 +34,7 @@ const Editar: React.FC = () => {
     //   }
     // };
 
-    const driver = drivers_mock.find(driver => driver.id.toString() === id);
+    const driver = drivers.all.find(driver => driver.id.toString() === id);
 
     if (driver) {
       setName(driver.name);

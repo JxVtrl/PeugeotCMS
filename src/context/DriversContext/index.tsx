@@ -28,12 +28,14 @@ type DriverProps = {
 type DriversList = {
   future: DriverProps[];
   past: DriverProps[];
+  all: DriverProps[];
 };
 
 export function DriversProvider({ children }: any) {
   const [drivers, setDrivers] = React.useState<DriversList>({
     future: [],
     past: [],
+    all: [],
   });
 
   const value = {

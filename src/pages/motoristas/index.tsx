@@ -109,7 +109,7 @@ const Motoristas: React.FC = () => {
     setDrivers(drivers);
   };
 
-  const deleteDriver = (driver: any) => {
+  const deleteDriver = (driver: DriverProps) => {
     try {
       removeDriverFromDB(driver).then(() => {
         const futureDrivers = drivers.future.filter(d => d.id !== driver.id);
@@ -118,6 +118,7 @@ const Motoristas: React.FC = () => {
         setNewDriverList({
           future: futureDrivers,
           past: pastDrivers,
+          all: [...futureDrivers, ...pastDrivers],
         });
       });
     } catch (error) {
