@@ -39,11 +39,11 @@ const Novo: React.FC = () => {
 
     if (newClient) {
       try {
-        let response = axios.post(
-          'http://localhost:3036/api/users/new',
-          newClient,
-        );
-        console.log(response);
+        // let response = axios.post(
+        //   'http://localhost:3036/api/users/new',
+        //   newClient,
+        // );
+        console.log(newClient);
       } catch (error) {
         console.error(error);
       }
