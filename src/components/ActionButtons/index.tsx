@@ -5,12 +5,12 @@ import { BsTrash } from 'react-icons/bs';
 import { ActionButtonsProps } from '@/interfaces/Button.interface';
 import { FiInfo } from 'react-icons/fi';
 
-const ActionButtons: React.FC<ActionButtonsProps> = ({
+const ActionButtons = ({
   type = 'info',
   infoAction,
   editAction,
   deleteAction,
-}) => {
+}: ActionButtonsProps) => {
   return (
     <S.ActionButtons>
       {type === 'info' && <FiInfo onClick={infoAction} />}
