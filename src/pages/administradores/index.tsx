@@ -9,39 +9,40 @@ import { usePageTitle } from '@/hooks/usePageTitle';
 import { columns_administradores } from '@/data/columns';
 import { admins_mock } from '@/data/admins';
 import { AdminProps } from '@/interfaces/Admin.interface';
+import { useAdmin } from '@/context/AdminContext';
 
 const Administradores: React.FC = () => {
   const router = useRouter();
 
-  const [admins, setAdmins] = useState<AdminProps[]>(admins_mock);
+  const { adminList, setAdminList } = useAdmin();
+
   const [filteredAdmins, setFilteredAdmins] =
     useState<AdminProps[]>(admins_mock);
   const [inputSearch, setInputSearch] = React.useState('');
 
   usePageTitle('Administradores');
-  
-    const handleSearch = (value: string) => {
+
+  const handleSearch = (value: string) => {
     setInputSearch(value);
   };
-
 
   const handleNewAdmin = () => {
     router.push('/administradores/novo');
   };
 
   function deleteAdmin(id: number | string) {
-    const index = admins.findIndex(admin => admin.id === id);
-    admins.splice(index, 1);
-    setAdmins([...admins]);
+    const index = adminList.findIndex(admin => admin.id === id);
+    adminList.splice(index, 1);
+    setAdminList([...adminList]);
   }
 
   useEffect(() => {
     setFilteredAdmins(
-      admins.filter(admin =>
+      adminList.filter(admin =>
         admin.name.toLowerCase().includes(inputSearch.toLowerCase()),
       ),
     );
-  }, [inputSearch, admins]);
+  }, [inputSearch, adminList]);
 
   const rows = filteredAdmins.map(admin => {
     return {

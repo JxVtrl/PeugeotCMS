@@ -7,31 +7,67 @@ import * as S from './styles';
 import { usePageTitle } from '@/hooks/usePageTitle';
 import { useCars } from '@/context/CarsContext';
 import { CarsProps } from '@/data/cars';
+import { useAdmin } from '@/context/AdminContext';
 
 const Novo: React.FC = () => {
-  const { cars, setCars } = useCars();
-
-  const [carName, setCarName] = useState('');
-  const [carModel, setCarModel] = useState('');
-  const [carSchedule, setCarSchedule] = useState([]);
+  const { adminList, setAdminList } = useAdmin();
+  const [name, setName] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
 
   usePageTitle('Novo Administrador');
 
+  const title = 'Cadastrar novo administrador';
   const router = useRouter();
 
-  const handleAddCar = () => {
-    const newCar = {
-      id: cars.length + 1,
-      nome: carName,
-      modelo: carModel,
-      agenda: carSchedule,
+  const handleAddAdmin = () => {
+    const newAdmin = {
+      id: adminList.length + 1,
+      name,
+      cpf,
+      email,
+      phone,
     };
 
-    setCars([...cars, newCar]);
+    setAdminList([...adminList, newAdmin]);
     router.push('/administradores');
   };
 
-  const title = 'Cadastrar novo administrador';
+  const items = [
+    {
+      label: 'Nome',
+      placeholder: 'Nome do administrador',
+      value: name,
+      onChange: e => {
+        setName(e);
+      },
+    },
+    {
+      label: 'CPF',
+      placeholder: 'CPF do administrador',
+      value: cpf,
+      onChange: e => {
+        setCpf(e);
+      },
+    },
+    {
+      label: 'Email',
+      placeholder: 'Email do administrador',
+      value: email,
+      onChange: e => {
+        setEmail(e);
+      },
+    },
+    {
+      label: 'Telefone',
+      placeholder: 'Telefone do administrador',
+      value: phone,
+      onChange: e => {
+        setPhone(e);
+      },
+    },
+  ] as FormItemProps[];
 
   const buttons = [
     {
@@ -42,36 +78,9 @@ const Novo: React.FC = () => {
     {
       text: 'Salvar',
       variant: 'primary',
-      onClick: handleAddCar,
+      onClick: handleAddAdmin,
     },
   ] as ButtonProps[];
-
-  const items = [
-    {
-      label: 'Nome',
-      placeholder: 'Nome do carro',
-      value: carName,
-      onChange: e => {
-        setCarName(e);
-      },
-    },
-    {
-      label: 'Modelo',
-      placeholder: 'Digite o modelo do carro',
-      value: carModel,
-      onChange: e => {
-        setCarModel(e);
-      },
-    },
-    {
-      label: 'Agenda',
-      placeholder: 'Agenda referente ao carro',
-      value: carSchedule,
-      onChange: e => {
-        setCarSchedule(e);
-      },
-    },
-  ] as FormItemProps[];
 
   return (
     <S.Container>
