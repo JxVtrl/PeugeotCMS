@@ -5,18 +5,21 @@ import AppLayout from '@/layout/AppLayout';
 import { ChakraProvider } from '@chakra-ui/react';
 import { CarsProvider } from '@/context/CarsContext';
 import { AdminProvider } from '@/context/AdminContext';
+import { DriversProvider } from '@/context/DriversContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
       <CarsProvider>
-        <MenuProvider>
-          <AdminProvider>
-            <AppLayout>
-              <Component {...pageProps} />
-            </AppLayout>
-          </AdminProvider>
-        </MenuProvider>
+        <DriversProvider>
+          <MenuProvider>
+            <AdminProvider>
+              <AppLayout>
+                <Component {...pageProps} />
+              </AppLayout>
+            </AdminProvider>
+          </MenuProvider>
+        </DriversProvider>
       </CarsProvider>
     </ChakraProvider>
   );
