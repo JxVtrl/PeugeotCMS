@@ -21,7 +21,7 @@ const CarsContext = createContext({} as CarsContextProps);
 export function CarsProvider({ children }: any) {
   const router = useRouter();
 
-  const cadasteredCars  = [
+  const cadasteredCars = [
     { id: 1, nome: 'Carro A', modelo: 'Sedan', agenda: [] },
     { id: 2, nome: 'Carro B', modelo: 'SUV', agenda: [] },
     { id: 3, nome: 'Carro C', modelo: 'Hatchback', agenda: [] },

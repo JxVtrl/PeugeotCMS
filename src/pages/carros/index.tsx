@@ -19,6 +19,8 @@ const Carros: React.FC = () => {
   const [cars, setCars] = useState<CarsProps[]>(cadasteredCars);
   const [filteredCars, setFilteredCars] = useState<CarsProps[]>(cadasteredCars);
   const [search, setSearch] = useState('');
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [carToUpdate, setCarToUpdate] = useState<CarsProps | null>(null);
 
   usePageTitle('Carros');
 
@@ -44,13 +46,23 @@ const Carros: React.FC = () => {
         <ActionButtons
           type="edit-delete"
           deleteAction={() => deleteCar(car.id)}
-          editAction={() => updateCar(car.id)}
+          editAction={() => {
+            setCarToUpdate(car);
+            setShowUpdateModal(true);
+          }}
         />
       ),
       name: car.nome,
       schedule: car.agenda,
     };
   });
+
+  function updateCar(name: string) {
+    if (carToUpdate) {
+      carToUpdate.nome = name;
+      setCars([...cars]);
+    }
+  }
 
   return (
     <S.Container>
@@ -62,6 +74,32 @@ const Carros: React.FC = () => {
         handleButton={handleNewCar}
       />
       <Table columns={columns_carros} rows={rows} />
+      {showUpdateModal && (
+        <S.Modal>
+          <S.ModalContent>
+            <S.ModalHeader>
+              <h2>Atualizar carro</h2>
+              <button onClick={() => setShowUpdateModal(false)}>X</button>
+            </S.ModalHeader>
+            <S.ModalBody>
+              <input
+                type="text"
+                onChange={e => updateCar(e.target.value)}
+                value={carToUpdate?.nome}
+              />
+            </S.ModalBody>
+            <S.ModalFooter>
+              <S.Button
+                onClick={() => {
+                  setShowUpdateModal(false);
+                }}
+              >
+                Atualizar
+              </S.Button>
+            </S.ModalFooter>
+          </S.ModalContent>
+        </S.Modal>
+      )}
     </S.Container>
   );
 };
