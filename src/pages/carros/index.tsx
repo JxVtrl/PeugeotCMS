@@ -82,9 +82,14 @@ const Carros: React.FC = () => {
               <button onClick={() => setShowUpdateModal(false)}>X</button>
             </S.ModalHeader>
             <S.ModalBody>
-              <input
+              <S.Input
                 type="text"
                 onChange={e => updateCar(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') {
+                    setShowUpdateModal(false);
+                  }
+                }}
                 value={carToUpdate?.nome}
               />
             </S.ModalBody>
