@@ -45,6 +45,16 @@ const Table: React.FC<TableProps> = ({ columns, rows }) => {
 
               const checkIfValueExists =
                 row[column.field] === 0 || row[column.field];
+              
+              const checkIfValueIsBoolean = typeof row[column.field] === 'boolean';
+              
+              if (checkIfValueIsBoolean) {
+                return (
+                  <S.TableRowItem key={index}>
+                    {row[column.field] ? 'Sim' : 'Não'}
+                  </S.TableRowItem>
+                );
+              }
 
               return (
                 <S.TableRowItem

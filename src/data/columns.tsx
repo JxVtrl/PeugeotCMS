@@ -26,8 +26,8 @@ export const columns_carros = [
 
 export const columns_administradores = [
   { title: 'Ações', field: 'actions' },
-  { title: 'Nome', field: 'name' },
+  { title: 'Nome', field: 'fullName' },
   { title: 'CPF', field: 'cpf' },
   { title: 'Email', field: 'email' },
-  { title: 'Telefone', field: 'phone' },
+  { title: 'Telefone', field: 'phoneNumber' },
 ]

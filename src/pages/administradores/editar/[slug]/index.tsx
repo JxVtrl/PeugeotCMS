@@ -5,31 +5,28 @@ import { FormItemProps } from '@/interfaces/Form.interface';
 import { useRouter } from 'next/router';
 import * as S from './styles';
 import { usePageTitle } from '@/hooks/usePageTitle';
-import { drivers_mock } from '../../index';
-import { admins_mock } from '@/data/admins';
+import { useAdmin } from '@/context/AdminContext';
+
 const Editar: React.FC = () => {
+  
+  const {adminList}=useAdmin()
   usePageTitle("Taylor Dashboard - Editar Motorista");
   const router = useRouter();
   const [name, setName] = React.useState('');
   const [cpf, setCpf] = React.useState('');
   const [rg, setRg] = React.useState('');
   const [phone, setPhone] = React.useState('');
-  const [celphone, setCelphone] = React.useState('');
-  const [route, setRoute] = React.useState('');
 
   const { slug } = router.query;
   
-  
   useEffect(() => {
     // get drivers from API
-    const admin = admins_mock.find((admin) => admin.id.toString() === slug);
+    const admin = adminList.find((admin) => admin.id.toString() === slug);
     if (admin) {
       setName(admin.name);
       setCpf(admin.cpf);
       setRg(admin.email);
       setPhone(admin.phone);
-      setCelphone(admin.seller_code);
-      setRoute(admin.schedule);
     }
   }, [slug]);
   
@@ -42,8 +39,6 @@ const Editar: React.FC = () => {
       cpf,
       rg,
       phone,
-      celphone,
-      route
     };
     
     console.log(client);
@@ -90,18 +85,6 @@ const Editar: React.FC = () => {
       value: phone,
       onChange: setPhone,
     },
-    {
-      label: 'Celular',
-      placeholder: 'Digite o celular',
-      value: celphone,
-      onChange: setCelphone,
-    },
-    {
-      label: 'Rota',
-      placeholder: 'Digite o rota',
-      value: route,
-      onChange: setRoute,
-    }
   ] as FormItemProps[];
 
   return (
