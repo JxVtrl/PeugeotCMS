@@ -7,46 +7,8 @@ import * as S from './styles';
 import { usePageTitle } from '@/hooks/usePageTitle';
 import Tabs from '@/components/Tabs';
 import { columns_motoristas } from '@/data/columns';
-import axios from 'axios';
-
-type DriverProps = {
-  id: string | number;
-  name: string;
-  cpf: string;
-  email: string;
-  phone: string;
-  seller_code: string;
-  schedule: string;
-  car: string;
-};
-
-type DriversList = {
-  future: DriverProps[];
-  past: DriverProps[];
-};
-
-export const drivers_mock = [
-  {
-    id: 0,
-    name: 'João',
-    cpf: '123.456.789-00',
-    email: 'joao@gmail.com',
-    phone: '11 1234-5678',
-    seller_code: '123456',
-    schedule: '2021-09-10T15:00:00.000Z',
-    car: 'Fusca',
-  },
-  {
-    id: 1,
-    name: 'Maria',
-    cpf: '987.654.321-00',
-    email: 'maria@gmail.com',
-    phone: '11 9876-5432',
-    seller_code: '654321',
-    schedule: '2021-09-10T15:00:00.000Z',
-    car: 'Gol',
-  },
-];
+import { drivers_mock } from '@/data/drivers';
+import { DriverProps, DriversList } from '@/interfaces/Driver.interface';
 
 const Motoristas: React.FC = () => {
   usePageTitle('Motoristas');
