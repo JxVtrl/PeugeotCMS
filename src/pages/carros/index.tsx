@@ -12,9 +12,19 @@ import { useCars } from '@/context/CarsContext';
 import { columns_carros } from '@/data/columns';
 
 const Carros: React.FC = () => {
+  const router = useRouter();
+
   const { cadasteredCars } = useCars();
 
   const [cars, setCars] = useState<CarsProps[]>(cadasteredCars);
+  const [filteredCars, setFilteredCars] = useState<CarsProps[]>(cadasteredCars);
+  const [search, setSearch] = useState('');
+
+  usePageTitle('Carros');
+
+  const handleNewCar = () => {
+    router.push('/carros/novo');
+  };
 
   function deleteCar(id: number) {
     const index = cars.findIndex(car => car.id === id);
@@ -22,15 +32,13 @@ const Carros: React.FC = () => {
     setCars([...cars]);
   }
 
-  usePageTitle('Dashboard - Carros');
-
-  const router = useRouter();
-
   useEffect(() => {
-    console.log(cars);
-  }, cars);
+    setFilteredCars(
+      cars.filter(car => car.nome.toLowerCase().includes(search.toLowerCase())),
+    );
+  }, [search, cars]);
 
-  const rows = cars.map(car => {
+  const rows = filteredCars.map(car => {
     return {
       actions: (
         <ActionButtons
@@ -44,15 +52,11 @@ const Carros: React.FC = () => {
     };
   });
 
-  const handleNewCar = () => {
-    router.push('/carros/novo');
-  };
-
   return (
     <S.Container>
       <Header
-        inputOnChange={() => null}
-        inputValue=""
+        inputOnChange={(e: any) => setSearch(e.target.value)}
+        inputValue={search}
         inputLabel="Buscar"
         inputPlaceholder="Digite o cpf ou nome do cliente"
         handleButton={handleNewCar}
