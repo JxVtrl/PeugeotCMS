@@ -40,7 +40,6 @@ const Carros: React.FC = () => {
         />
       ),
       name: car.nome,
-      model: car.modelo,
       schedule: car.agenda,
     };
   });
