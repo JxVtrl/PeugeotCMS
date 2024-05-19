@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+align-items: center;
   width: 100%;
 
   gap: 28px;
@@ -47,7 +48,7 @@ export const RightOptions = styled.div`
 
 export const FootContent = styled.div`
   display: flex;
-  align-items: center;
+width: 100%;
 
   h1 {
     color: #636363;

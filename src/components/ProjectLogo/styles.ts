@@ -6,11 +6,24 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+margin-bottom: 21px;
 `;
 
 export const LogoContainer = styled.div`
   cursor: pointer;
-margin-left: 8px;
+  margin-left: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+export const LogoText = styled.p`
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  margin-left: 8px;
 `;
 
 export const CloseButtonContainer = styled.div``;

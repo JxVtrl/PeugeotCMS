@@ -3,8 +3,8 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FiDollarSign, FiMap } from 'react-icons/fi';
 import { BsArchive, BsPeople, BsWrench } from 'react-icons/bs';
 import { FaCarAlt } from 'react-icons/fa';
-import { RiAdminLine } from "react-icons/ri";
-import { TbSteeringWheel } from "react-icons/tb";
+import { RiAdminLine } from 'react-icons/ri';
+import { TbSteeringWheel } from 'react-icons/tb';
 type iRoutesData = {
   id: number;
   title: string;
@@ -73,8 +73,16 @@ export const RoutesData: iRoutesData = [
     icon: <BsWrench />,
     route: '/configuracao',
     visible: true,
+    accordionVisible: true,
+    accordion: [
+      {
+        id: 0,
+        title: 'Tempo total de Utilização',
+        route: '/configuracao/tempo-utilizacao',
+      },
+    ],
   },
-  
+
   {
     id: 1,
     title: 'Administradores',

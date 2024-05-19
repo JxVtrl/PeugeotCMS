@@ -5,23 +5,37 @@ import { BsTrash } from 'react-icons/bs';
 import { ActionButtonsProps } from '@/interfaces/Button.interface';
 import { FiInfo } from 'react-icons/fi';
 
-const ActionButtons: React.FC<ActionButtonsProps> = ({
+const ActionButtons = ({
   type = 'info',
   infoAction,
   editAction,
   deleteAction,
-}) => {
+}: ActionButtonsProps) => {
+  
+  const renderContent = () => {
+    switch (type) {
+      case 'info':
+        return <FiInfo onClick={infoAction} />;
+      case 'edit':
+        return <AiOutlineEdit onClick={editAction} />;
+      case 'delete':
+        return <BsTrash onClick={deleteAction} />;
+      case 'edit-delete':
+        return (
+          <>
+            <AiOutlineEdit onClick={editAction} />
+            <BsTrash onClick={deleteAction} />
+          </>
+        );
+      default:
+        return <FiInfo onClick={infoAction} />;
+    }
+  }
+  
+  
   return (
     <S.ActionButtons>
-      {type === 'info' && <FiInfo onClick={infoAction} />}
-      {type === 'edit' && <AiOutlineEdit onClick={editAction} />}
-      {type === 'delete' && <BsTrash onClick={deleteAction} />}
-      {type === 'edit-delete' && (
-        <>
-          <AiOutlineEdit onClick={editAction} />
-          <BsTrash onClick={deleteAction} />
-        </>
-      )}
+      {renderContent()}
     </S.ActionButtons>
   );
 };

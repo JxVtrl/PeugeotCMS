@@ -20,29 +20,27 @@ const AppBar: React.FC = () => {
     // router.push('/');
   };
 
-  const getTitle = () =>
-    router.pathname.replaceAll('/', '')
-      ? RoutesData.find(item => {
-        return item.route === router.pathname;
-      })?.title
-      : 'Home'
+  const getTitle = () => {
+    const allRoutes = RoutesData.flatMap(route =>
+      route.accordion ? [route, ...route.accordion] : [route],
+    );
 
+    const currentRoute = allRoutes.find(
+      route => route.route === router.pathname,
+    );
+
+    return currentRoute ? currentRoute.title : 'Página não encontrada';
+  };
 
   return (
     <S.Container>
       <S.Content>
         <S.LeftOptions>
-          {isMobile ? (
-            <GiHamburgerMenu onClick={() => setShowMenu(true)} />
-          ) : (
-            <ChangeTheme />
-          )}
+          {isMobile && <GiHamburgerMenu onClick={() => setShowMenu(true)} />}
         </S.LeftOptions>
       </S.Content>
       <S.FootContent>
-        <h1>
-          {getTitle()}
-        </h1>
+        <h1>{getTitle()}</h1>
         <VerticalLine height={20} color="#d6dce1" />
         <S.FootPaths>
           <BiHomeAlt
