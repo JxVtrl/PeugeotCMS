@@ -6,8 +6,14 @@ import { useRouter } from 'next/router';
 import * as S from './styles';
 import { usePageTitle } from '@/hooks/usePageTitle';
 import { drivers_mock } from '../../index';
+import axios from 'axios';
+import { set } from 'react-hook-form';
+import { useDrivers } from '@/context/DriversContext';
+
 const Editar: React.FC = () => {
-  usePageTitle("Taylor Dashboard - Editar Motorista");
+  const { drivers, setDrivers } = useDrivers();
+
+  usePageTitle('Taylor Dashboard - Editar Motorista');
   const router = useRouter();
   const [name, setName] = React.useState('');
   const [cpf, setCpf] = React.useState('');
@@ -16,12 +22,22 @@ const Editar: React.FC = () => {
   const [celphone, setCelphone] = React.useState('');
   const [route, setRoute] = React.useState('');
 
-  const { slug } = router.query;
-  
-  
+  const { id } = router.query;
+
   useEffect(() => {
     // get drivers from API
-    const driver = drivers_mock.find((driver) => driver.id.toString() === slug);
+    // const getAllDrivers = async () => {
+    //   try {
+    //     let response = await axios.get('http://localhost:3036/api/users/list');
+    //     setDrivers(response.data);
+    //     console.log(response.data);
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // };
+
+    const driver = drivers_mock.find(driver => driver.id.toString() === id);
+
     if (driver) {
       setName(driver.name);
       setCpf(driver.cpf);
@@ -30,23 +46,34 @@ const Editar: React.FC = () => {
       setCelphone(driver.seller_code);
       setRoute(driver.schedule);
     }
-  }, [slug]);
-  
+  }, [id]);
 
-  const handleSaveClient = () => {
+  const handleUpdateClient = () => {
     console.log('Salvando cliente');
-    
+
     const client = {
       name,
       cpf,
       rg,
       phone,
       celphone,
-      route
+      route,
     };
-    
+
+    if (client) {
+      try {
+        let response = axios.put(
+          `http://localhost:3036/api/users/update/${id}`,
+          client,
+        );
+        console.log(response);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
     console.log(client);
-    router.push('/motoristas');
+    // router.push('/motoristas');
   };
 
   const title = 'Editar motorista';
@@ -60,9 +87,9 @@ const Editar: React.FC = () => {
     {
       text: 'Salvar',
       variant: 'primary',
-      onClick: handleSaveClient,
-    }
-  ] as ButtonProps[]
+      onClick: handleUpdateClient,
+    },
+  ] as ButtonProps[];
 
   const items = [
     {
@@ -100,18 +127,14 @@ const Editar: React.FC = () => {
       placeholder: 'Digite o rota',
       value: route,
       onChange: setRoute,
-    }
+    },
   ] as FormItemProps[];
 
   return (
     <S.Container>
-      <NewForm
-        title={title}
-        buttons={buttons}
-        items={items}
-      />
+      <NewForm title={title} buttons={buttons} items={items} />
     </S.Container>
   );
-}
+};
 
 export default Editar;

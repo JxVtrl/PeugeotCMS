@@ -124,6 +124,8 @@ const Motoristas: React.FC = () => {
     return new Promise(resolve => {
       resolve(driver);
     });
+
+    
   };
 
   const setNewDriverList = (drivers: DriversList) => {

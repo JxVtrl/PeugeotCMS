@@ -24,14 +24,6 @@ const TempoUtilizado: React.FC = () => {
       onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
         setUntil(e.target.value),
     },
-    {
-      label: 'Tempo Máximo:',
-      type: 'time',
-      id: 'maxTime',
-      value: maxTime,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-        setMaxTime(e.target.value),
-    },
   ];
   return (
     <S.Container>
@@ -47,6 +39,16 @@ const TempoUtilizado: React.FC = () => {
             />
           </S.ContainerInput>
         ))}
+
+        <S.Label htmlFor="maxTime">Tempo máximo de utilização</S.Label>
+        <S.InputCustom
+          type="number"
+          id="maxTime"
+          value={maxTime}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setMaxTime(e.target.value)
+          }
+        />
 
         <S.Button type="submit">Salvar</S.Button>
       </S.Form>
