@@ -88,6 +88,11 @@ export const RoutesData: iRoutesData = [
         title: 'Novo Administrador',
         route: '/administradores/novo',
       },
+      {
+        id: 0,
+        title: 'Editar Administrador',
+        route: '/administradores/editar',
+      },
     ],
   },
 ];
