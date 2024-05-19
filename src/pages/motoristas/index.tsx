@@ -85,6 +85,7 @@ const Motoristas: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
+    // TODO: Verificar response do backend com a função abaixo
     // const getAllDrivers = async () => {
     //   let response = await axios.get('http://localhost:3036/api/users/list');
     //   console.log(response.data);
@@ -120,12 +121,26 @@ const Motoristas: React.FC = () => {
     setInputSearch(value);
   };
 
-  const removeDriverFromDB = (driver: any) => {
-    return new Promise(resolve => {
-      resolve(driver);
+  const removeDriverFromDB = async (driver: any) => {
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          resolve(driver);
+        } catch (error) {
+          reject(error);
+        }
+      }, 1000);
     });
 
-    
+    // TODO: Verificar response do backend na função abaixo
+    // try {
+    //   const response = await axios.delete(
+    //     `http://localhost:3036/api/users/destroy/${driver.id}`,
+    //   );
+    //   console.log(response.data);
+    // } catch (error) {
+    //   console.log('Error deleting driver', error);
+    // }
   };
 
   const setNewDriverList = (drivers: DriversList) => {
