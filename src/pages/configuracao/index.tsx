@@ -4,37 +4,50 @@ import * as S from './styles';
 const Geral: React.FC = () => {
   const [from, setFrom] = useState('');
   const [until, setUntil] = useState('');
-
   const [maxTime, setMaxTime] = useState('');
+
+  const inputs = [
+    {
+      label: 'De:',
+      type: 'datetime-local',
+      id: 'from',
+      value: from,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        setFrom(e.target.value),
+    },
+    {
+      label: 'Até:',
+      type: 'datetime-local',
+      id: 'until',
+      value: until,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        setUntil(e.target.value),
+    },
+    {
+      label: 'Tempo Máximo:',
+      type: 'time',
+      id: 'maxTime',
+      value: maxTime,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        setMaxTime(e.target.value),
+    },
+  ];
 
   return (
     <S.Container>
       <S.Subtitle>Tempo total de Utilização</S.Subtitle>
       <S.Form>
-        <S.Label htmlFor="from">De:</S.Label>
-        <S.InputCustom
-          type="time"
-          id="from"
-          value={from}
-          onChange={e => setFrom(e.target.value)}
-        />
-        <S.Label htmlFor="until">Até:</S.Label>
-        <S.InputCustom
-          type="time"
-          id="until"
-          value={until}
-          onChange={e => setUntil(e.target.value)}
-        />
-
-        <S.Subtitle>Tempo Teste Drive</S.Subtitle>
-
-        <S.Label htmlFor="until">Tempo Máximo:</S.Label>
-        <S.InputCustom
-          type="text"
-          id="until"
-          value={maxTime}
-          onChange={e => setMaxTime(e.target.value)}
-        />
+        {inputs.map(input => (
+          <S.ContainerInput key={input.id}>
+            <S.Label htmlFor={input.id}>{input.label}</S.Label>
+            <S.InputCustom
+              type={input.type}
+              id={input.id}
+              value={input.value}
+              onChange={input.onChange}
+            />
+          </S.ContainerInput>
+        ))}
 
         <S.Button type="submit">Salvar</S.Button>
       </S.Form>
