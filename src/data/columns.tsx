@@ -30,5 +30,4 @@ export const columns_administradores = [
   { title: 'CPF', field: 'cpf' },
   { title: 'Email', field: 'email' },
   { title: 'Telefone', field: 'phoneNumber' },
-  { title: 'Deseja Test Drive', field: 'wantsTestDrive' },
 ]

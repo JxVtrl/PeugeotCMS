@@ -4,5 +4,4 @@ export interface AdminProps {
   cpf: string;
   email: string;
   phoneNumber: string;
-  wantsTestDrive: boolean;
 }
