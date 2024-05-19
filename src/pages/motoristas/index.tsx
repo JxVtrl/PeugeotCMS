@@ -9,20 +9,19 @@ import Tabs from '@/components/Tabs';
 import { columns_motoristas } from '@/data/columns';
 import { drivers_mock } from '@/data/drivers';
 import { DriverProps, DriversList } from '@/interfaces/Driver.interface';
+import { useDrivers } from '@/context/DriversContext';
 
 const Motoristas: React.FC = () => {
   usePageTitle('Motoristas');
   const router = useRouter();
   const [inputSearch, setInputSearch] = React.useState('');
 
-  const [drivers, setDrivers] = React.useState<DriversList>({
-    future: [],
-    past: [],
-  });
+const {drivers, setDrivers}=useDrivers()
 
   const [filteredDrivers, setFilteredDrivers] = React.useState<DriversList>({
     future: [],
     past: [],
+    all: []
   });
 
   const filterDriver = (drivers: DriverProps[], type: 'future' | 'past') => {
@@ -43,6 +42,7 @@ const Motoristas: React.FC = () => {
     setDrivers({
       future: futureDrivers,
       past: pastDrivers,
+      all: [...futureDrivers, ...pastDrivers],
     });
   }, []);
 
@@ -72,6 +72,7 @@ const Motoristas: React.FC = () => {
     setFilteredDrivers({
       future,
       past,
+      all: [...future, ...past],
     });
   }, [inputSearch, drivers]);
 
