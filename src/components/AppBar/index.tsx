@@ -34,14 +34,16 @@ const AppBar: React.FC = () => {
 
   return (
     <S.Container>
-      <S.Content>
-        <S.LeftOptions>
-          {isMobile && <GiHamburgerMenu onClick={() => setShowMenu(true)} />}
-        </S.LeftOptions>
-      </S.Content>
+      {isMobile && (
+        <S.Content>
+          <S.LeftOptions>
+            {isMobile && <GiHamburgerMenu onClick={() => setShowMenu(true)} />}
+          </S.LeftOptions>
+        </S.Content>
+      )}
       <S.FootContent>
         <h1>{getTitle()}</h1>
-        <VerticalLine height={20} color="#d6dce1" />
+        {!isMobile && <VerticalLine height={20} color="#d6dce1" />}
         <S.FootPaths>
           <BiHomeAlt
             color="#175673"

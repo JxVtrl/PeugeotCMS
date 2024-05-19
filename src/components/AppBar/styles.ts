@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-align-items: center;
+  align-items: center;
   width: 100%;
 
   gap: 28px;
@@ -48,7 +48,15 @@ export const RightOptions = styled.div`
 
 export const FootContent = styled.div`
   display: flex;
-width: 100%;
+  width: 100%;
+
+  margin-top: 64px;
+
+  @media (max-width: 768px) {
+    margin-top: 0;
+    flex-direction: column;
+gap: 12px;
+  }
 
   h1 {
     color: #636363;
