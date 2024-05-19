@@ -11,7 +11,7 @@ export interface NewFormProps {
 export interface FormItemProps {
   label: string;
   placeholder: string;
-  type?: 'text' | 'number' | 'select';
+  type?: 'text' | 'number' | 'select' | 'checkbox';
   mask?: 'currency' | 'percentage' | 'cpf' | 'cnpj' | 'phone' | 'cep' | 'date';
   required?: boolean;
   data?: any[];

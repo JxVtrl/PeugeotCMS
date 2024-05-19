@@ -45,7 +45,7 @@ const FormItem = ({
           type={type}
           placeholder={placeholder}
           value={value}
-          onChange={e => onChange(e.target.value)}
+          onChange={type === 'checkbox' ? (e) => onChange(e.target.checked) : (e) => onChange(e.target.value)}
         />
       )}
     </S.FormGroup>
