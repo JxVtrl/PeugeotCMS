@@ -58,4 +58,7 @@ export const TabContent = styled.div`
   width: 100%;
   background-color: #fff;
   border-radius: 8px;
+
+overflow-x: auto;
+  
 `;
