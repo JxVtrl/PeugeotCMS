@@ -23,10 +23,10 @@ const Editar: React.FC = () => {
     // get drivers from API
     const admin = adminList.find((admin) => admin.id.toString() === slug);
     if (admin) {
-      setName(admin.name);
+      setName(admin.fullName);
       setCpf(admin.cpf);
       setRg(admin.email);
-      setPhone(admin.phone);
+      setPhone(admin.phoneNumber);
     }
   }, [slug]);
   

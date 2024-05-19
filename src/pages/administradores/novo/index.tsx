@@ -24,10 +24,10 @@ const Novo: React.FC = () => {
   const handleAddAdmin = () => {
     const newAdmin = {
       id: adminList.length + 1,
-      name,
+      fullName: name,
       cpf,
       email,
-      phone,
+      phoneNumber: phone,
     };
 
     setAdminList([...adminList, newAdmin]);
