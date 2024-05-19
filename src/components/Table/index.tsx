@@ -33,9 +33,13 @@ const Table: React.FC<TableProps> = ({ columns, rows }) => {
                 );
               }
               
+              
+              const checkIfValueExists = row[column.field] === 0 || row[column.field];
+              
+              
               return (
                 <S.TableRowItem key={index}>
-                  {row[column.field] || "N/A"}
+                  {checkIfValueExists ? row[column.field] : "-"}
                 </S.TableRowItem>
               );
             })}

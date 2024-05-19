@@ -63,6 +63,7 @@ export const TableHeaderItem = styled.th`
 
   font-size: 14px;
   font-weight: 600;
+min-width: 35px;
 `;
 
 export const TableBody = styled.tbody``;
