@@ -24,7 +24,7 @@ type DriversList = {
   past: DriverProps[];
 };
 
-  const drivers_mock = [
+ export const drivers_mock = [
     {
       id: 0,
       name: 'João',
@@ -48,6 +48,7 @@ type DriversList = {
   ];
 
 const Motoristas: React.FC = () => {
+  
   usePageTitle('Motoristas');
   const router = useRouter();
   const [inputSearch, setInputSearch] = React.useState('');
@@ -140,6 +141,48 @@ const Motoristas: React.FC = () => {
     }
   };
 
+  
+  const futureRows = filteredDrivers.future.map(driver => {
+    return {
+      actions: (
+        <ActionButtons
+          type="edit-delete"
+          deleteAction={() => deleteDriver(driver)}
+          editAction={() => router.push(`/motoristas/editar/${driver.id}`)}
+        />
+      ),
+      id: driver.id,
+      name: driver.name,
+      cpf: driver.cpf,
+      email: driver.email,
+      phone: driver.phone,
+      seller_code: driver.seller_code,
+      schedule: driver.schedule,
+      car: driver.car,
+    };
+  });
+  
+  const pastRows = filteredDrivers.past.map(driver => {
+    return {
+      actions: (
+        <ActionButtons
+          type="edit-delete"
+          deleteAction={() => deleteDriver(driver)}
+          editAction={() => router.push(`/motoristas/editar/${driver.id}`)}
+        />
+      ),
+      id: driver.id,
+      name: driver.name,
+      cpf: driver.cpf,
+      email: driver.email,
+      phone: driver.phone,
+      seller_code: driver.seller_code,
+      schedule: driver.schedule,
+      car: driver.car,
+    };
+  });
+  
+  
   return (
     <S.Container>
       <Header
@@ -157,14 +200,14 @@ const Motoristas: React.FC = () => {
             content: (
               <Table
                 columns={columns_motoristas}
-                rows={filteredDrivers.future}
+                rows={futureRows}
               />
             ),
           },
           {
             title: 'Passados',
             content: (
-              <Table columns={columns_motoristas} rows={filteredDrivers.past} />
+              <Table columns={columns_motoristas} rows={pastRows} />
             ),
           },
         ]}
