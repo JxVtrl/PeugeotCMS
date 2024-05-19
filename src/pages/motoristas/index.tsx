@@ -7,6 +7,7 @@ import * as S from './styles';
 import { usePageTitle } from '@/hooks/usePageTitle';
 import Tabs from '@/components/Tabs';
 import { columns_motoristas } from '@/data/columns';
+import axios from 'axios';
 
 type DriverProps = {
   id: string | number;
@@ -84,6 +85,13 @@ const Motoristas: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
+    const getAllDrivers = async () => {
+      let response = await axios.get('http://localhost:3036/api/users/list');
+      console.log(response.data);
+    };
+
+    getAllDrivers();
+
     const future = drivers.future.filter(driver => {
       return (
         driver.name.toLowerCase().includes(inputSearch.toLowerCase()) ||
