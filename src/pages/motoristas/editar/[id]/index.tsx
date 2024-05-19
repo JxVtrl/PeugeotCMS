@@ -26,7 +26,7 @@ const Editar: React.FC = () => {
     // get drivers from API
     // const getAllDrivers = async () => {
     //   try {
-    //     let response = await axios.get('http://localhost:3036/api/users/list');
+    //     let response = await axios.get('http://localhost:3306/api/users/list');
     //     setDrivers(response.data);
     //     console.log(response.data);
     //   } catch (e) {
@@ -61,7 +61,7 @@ const Editar: React.FC = () => {
     if (client) {
       try {
         let response = axios.put(
-          `http://localhost:3036/api/users/update/${id}`,
+          `http://localhost:3306/api/users/update/${id}`,
           client,
         );
         console.log(response);

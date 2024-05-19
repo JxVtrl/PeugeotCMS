@@ -49,7 +49,7 @@ const Motoristas: React.FC = () => {
   React.useEffect(() => {
     // TODO: Verificar response do backend com a função abaixo
     // const getAllDrivers = async () => {
-    //   let response = await axios.get('http://localhost:3036/api/users/list');
+    //   let response = await axios.get('http://localhost:3306/api/users/list');
     //   console.log(response.data);
     // };
 
@@ -97,7 +97,7 @@ const Motoristas: React.FC = () => {
     // TODO: Verificar response do backend na função abaixo
     // try {
     //   const response = await axios.delete(
-    //     `http://localhost:3036/api/users/destroy/${driver.id}`,
+    //     `http://localhost:3306/api/users/destroy/${driver.id}`,
     //   );
     //   console.log(response.data);
     // } catch (error) {
